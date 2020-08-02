@@ -1,0 +1,172 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Parallel_OR
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+"core/text-transform0" [shape=record rankdir=LR label="{<f0> core/text-transform0 |<f1> Text transform on cells in column ﻿id using expression value.toNumber()}"];
+"core/text-transform1" [shape=record rankdir=LR label="{<f0> core/text-transform1 |<f1> Text transform on cells in column name using expression grel\:value.replace(/([%#!\\[\\]\\(\\)\\'\\\"\\.\\?\\,-])/,'')}"];
+"core/text-transform2" [shape=record rankdir=LR label="{<f0> core/text-transform2 |<f1> Text transform on cells in column name using expression value.trim()}"];
+"core/text-transform3" [shape=record rankdir=LR label="{<f0> core/text-transform3 |<f1> Text transform on cells in column name using expression value.replace(/\\s+/,' ')}"];
+"core/text-transform4" [shape=record rankdir=LR label="{<f0> core/text-transform4 |<f1> Text transform on cells in column name using expression value.toUppercase()}"];
+"core/mass-edit5" [shape=record rankdir=LR label="{<f0> core/mass-edit5 |<f1> Mass edit cells in column name}"];
+"core/mass-edit6" [shape=record rankdir=LR label="{<f0> core/mass-edit6 |<f1> Mass edit cells in column name}"];
+"core/column-removal7" [shape=record rankdir=LR label="{<f0> core/column-removal7 |<f1> Remove column description}"];
+"core/text-transform8" [shape=record rankdir=LR label="{<f0> core/text-transform8 |<f1> Text transform on cells in column menus_appeared using expression value.toNumber()}"];
+"core/text-transform9" [shape=record rankdir=LR label="{<f0> core/text-transform9 |<f1> Text transform on cells in column times_appeared using expression value.toNumber()}"];
+"core/text-transform10" [shape=record rankdir=LR label="{<f0> core/text-transform10 |<f1> Text transform on cells in column menus_appeared using expression grel\:if(value >=1, value,'')}"];
+"core/text-transform11" [shape=record rankdir=LR label="{<f0> core/text-transform11 |<f1> Text transform on cells in column times_appeared using expression grel\:if(value >=1, value,'')}"];
+"core/text-transform12" [shape=record rankdir=LR label="{<f0> core/text-transform12 |<f1> Text transform on cells in column first_appeared using expression value.toDate()}"];
+"core/text-transform13" [shape=record rankdir=LR label="{<f0> core/text-transform13 |<f1> Text transform on cells in column first_appeared using expression grel\:if(or(datePart(toDate(value),\"years\") < 1851,datePart(toDate(value),\"years\") > 2020),'', value)}"];
+"core/text-transform14" [shape=record rankdir=LR label="{<f0> core/text-transform14 |<f1> Text transform on cells in column last_appeared using expression value.toDate()}"];
+"core/text-transform15" [shape=record rankdir=LR label="{<f0> core/text-transform15 |<f1> Text transform on cells in column last_appeared using expression grel\:if(or(datePart(toDate(value),\"years\") < 1851,datePart(toDate(value),\"years\") > 2020),'', value)}"];
+"core/text-transform16" [shape=record rankdir=LR label="{<f0> core/text-transform16 |<f1> Text transform on cells in column lowest_price using expression value.toNumber()}"];
+"core/text-transform17" [shape=record rankdir=LR label="{<f0> core/text-transform17 |<f1> Text transform on cells in column lowest_price using expression grel\:if(value >= 0.01,value,'')}"];
+"core/text-transform18" [shape=record rankdir=LR label="{<f0> core/text-transform18 |<f1> Text transform on cells in column highest_price using expression value.toNumber()}"];
+"core/text-transform19" [shape=record rankdir=LR label="{<f0> core/text-transform19 |<f1> Text transform on cells in column highest_price using expression grel\:if(value >= 0.01,value,'')}"];
+"core/text-transform20" [shape=record rankdir=LR label="{<f0> core/text-transform20 |<f1> Text transform on cells in column name using expression grel\:if (value.match(/^\\d+$/)!= null, '', value)}"];
+CombineDataCleaningChanges
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+CleanData
+"﻿id"
+name
+name_1
+name_2
+name_3
+name_4
+name_5
+description
+menus_appeared
+times_appeared
+menus_appeared_1
+times_appeared_1
+first_appeared
+first_appeared_1
+last_appeared
+last_appeared_1
+lowest_price
+lowest_price_1
+highest_price
+highest_price_1
+name_6
+"﻿id_1"
+name_7
+"remove-description"
+menus_appeared_2
+times_appeared_2
+first_appeared_2
+last_appeared_2
+lowest_price_2
+highest_price_2
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+"expression:value.toNumber()"
+"expression:grel:value.replace(/([%#!\\[\\]\\(\\)\\'\\\"\\.\\?\\,-])/,'')"
+"expression:value.trim()"
+"expression:value.replace(/\\s+/,'_')"
+"expression:value.toUppercase()"
+"expression:value"
+"expression:grel:if(value_>=1,_value,'')"
+"expression:value.toDate()"
+"expression:grel:if(or(datePart(toDate(value),\"years\")_<_1851,datePart(toDate(value),\"years\")_>_2020),'',_value)"
+"expression:grel:if(value_>=_0.01,value,'')"
+"expression:grel:if_(value.match(/^\\d+$/)!=_null,_'',_value)"
+
+/* Edges representing connections between programs and channels */
+"core/text-transform0" -> "﻿id_1"
+"expression:value.toNumber()" -> "core/text-transform0"
+"﻿id" -> "core/text-transform0"
+"core/text-transform1" -> name_1
+"expression:grel:value.replace(/([%#!\\[\\]\\(\\)\\'\\\"\\.\\?\\,-])/,'')" -> "core/text-transform1"
+name -> "core/text-transform1"
+"core/text-transform2" -> name_2
+"expression:value.trim()" -> "core/text-transform2"
+name_1 -> "core/text-transform2"
+"core/text-transform3" -> name_3
+"expression:value.replace(/\\s+/,'_')" -> "core/text-transform3"
+name_2 -> "core/text-transform3"
+"core/text-transform4" -> name_4
+"expression:value.toUppercase()" -> "core/text-transform4"
+name_3 -> "core/text-transform4"
+"core/mass-edit5" -> name_5
+"expression:value" -> "core/mass-edit5"
+name_4 -> "core/mass-edit5"
+"core/mass-edit6" -> name_6
+"expression:value" -> "core/mass-edit6"
+name_5 -> "core/mass-edit6"
+"core/column-removal7" -> "remove-description"
+description -> "core/column-removal7"
+"core/text-transform8" -> menus_appeared_1
+"expression:value.toNumber()" -> "core/text-transform8"
+menus_appeared -> "core/text-transform8"
+"core/text-transform9" -> times_appeared_1
+"expression:value.toNumber()" -> "core/text-transform9"
+times_appeared -> "core/text-transform9"
+"core/text-transform10" -> menus_appeared_2
+"expression:grel:if(value_>=1,_value,'')" -> "core/text-transform10"
+menus_appeared_1 -> "core/text-transform10"
+"core/text-transform11" -> times_appeared_2
+"expression:grel:if(value_>=1,_value,'')" -> "core/text-transform11"
+times_appeared_1 -> "core/text-transform11"
+"core/text-transform12" -> first_appeared_1
+"expression:value.toDate()" -> "core/text-transform12"
+first_appeared -> "core/text-transform12"
+"core/text-transform13" -> first_appeared_2
+"expression:grel:if(or(datePart(toDate(value),\"years\")_<_1851,datePart(toDate(value),\"years\")_>_2020),'',_value)" -> "core/text-transform13"
+first_appeared_1 -> "core/text-transform13"
+"core/text-transform14" -> last_appeared_1
+"expression:value.toDate()" -> "core/text-transform14"
+last_appeared -> "core/text-transform14"
+"core/text-transform15" -> last_appeared_2
+"expression:grel:if(or(datePart(toDate(value),\"years\")_<_1851,datePart(toDate(value),\"years\")_>_2020),'',_value)" -> "core/text-transform15"
+last_appeared_1 -> "core/text-transform15"
+"core/text-transform16" -> lowest_price_1
+"expression:value.toNumber()" -> "core/text-transform16"
+lowest_price -> "core/text-transform16"
+"core/text-transform17" -> lowest_price_2
+"expression:grel:if(value_>=_0.01,value,'')" -> "core/text-transform17"
+lowest_price_1 -> "core/text-transform17"
+"core/text-transform18" -> highest_price_1
+"expression:value.toNumber()" -> "core/text-transform18"
+highest_price -> "core/text-transform18"
+"core/text-transform19" -> highest_price_2
+"expression:grel:if(value_>=_0.01,value,'')" -> "core/text-transform19"
+highest_price_1 -> "core/text-transform19"
+"core/text-transform20" -> name_7
+"expression:grel:if_(value.match(/^\\d+$/)!=_null,_'',_value)" -> "core/text-transform20"
+name_6 -> "core/text-transform20"
+CombineDataCleaningChanges -> CleanData
+"﻿id_1" -> CombineDataCleaningChanges
+name_7 -> CombineDataCleaningChanges
+description -> CombineDataCleaningChanges
+"remove-description" -> CombineDataCleaningChanges
+menus_appeared_2 -> CombineDataCleaningChanges
+times_appeared_2 -> CombineDataCleaningChanges
+first_appeared_2 -> CombineDataCleaningChanges
+last_appeared_2 -> CombineDataCleaningChanges
+lowest_price_2 -> CombineDataCleaningChanges
+highest_price_2 -> CombineDataCleaningChanges
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* End of top-level graph */
+}

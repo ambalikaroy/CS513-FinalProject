@@ -1,0 +1,159 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=OverallDataCleaningWorkflow
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+MenuCleaningWithOpenRefine [shape=record rankdir=LR label="{<f0> MenuCleaningWithOpenRefine |<f1> Clean Menu.csv with OpenRefine}"];
+MenuCleaningWithTableau [shape=record rankdir=LR label="{<f0> MenuCleaningWithTableau |<f1> Clean Menu_Clean.csv with Tableau}"];
+MenuPageCleaningWithOpenRefine [shape=record rankdir=LR label="{<f0> MenuPageCleaningWithOpenRefine |<f1> Clean MenuPage.csv with OpenRefine}"];
+MenuPageCleaningWithTableau [shape=record rankdir=LR label="{<f0> MenuPageCleaningWithTableau |<f1> Clean MenuPage_Clean.csv with Tableau}"];
+MenuItemCleaningWithOpenRefine [shape=record rankdir=LR label="{<f0> MenuItemCleaningWithOpenRefine |<f1> Clean MenuItem.csv with OpenRefine}"];
+MenuItemCleaningWithTableau [shape=record rankdir=LR label="{<f0> MenuItemCleaningWithTableau |<f1> Clean MenuItem_Clean.csv with Tableau}"];
+SplitDishFile [shape=record rankdir=LR label="{<f0> SplitDishFile |<f1> Split Dish.csv into 5 equal parts}"];
+DishCleaningWithOpenRefine [shape=record rankdir=LR label="{<f0> DishCleaningWithOpenRefine |<f1> Clean Dish part files with OpenRefine}"];
+DishCleaningWithTableau [shape=record rankdir=LR label="{<f0> DishCleaningWithTableau |<f1> Clean Dish part files with Tableau}"];
+MergeDishFile [shape=record rankdir=LR label="{<f0> MergeDishFile |<f1> Merge the cleaned partitioned files of Dish.csv}"];
+LoadMenuInSQLite [shape=record rankdir=LR label="{<f0> LoadMenuInSQLite |<f1> Load Menu_Clean_Final.csv into table\: Menu}"];
+LoadMenuPageInSQLite [shape=record rankdir=LR label="{<f0> LoadMenuPageInSQLite |<f1> Load MenuPage_Clean_Final.csv into table\: MenuPage}"];
+LoadMenuItemInSQLite [shape=record rankdir=LR label="{<f0> LoadMenuItemInSQLite |<f1> Load MenuItem_Clean_Final.csv into table\: MenuItem}"];
+LoadDishInSQLite [shape=record rankdir=LR label="{<f0> LoadDishInSQLite |<f1> Load Dish_Clean_Final.csv into table\: Dish}"];
+
+/* Style for nodes representing composite programs (sub-workflows) in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Helvetica]
+
+/* Nodes representing composite programs (sub-workflows) in workflow */
+CheckSQLConstraints [shape=record rankdir=LR label="{<f0> CheckSQLConstraints |<f1> SQL script to check integrity constraints}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+"Menu.csv" [shape=record rankdir=LR label="{<f0> Menu.csv |<f1> file\://NYPL-Menus/Menu.csv}"];
+"Menu_Clean.csv" [shape=record rankdir=LR label="{<f0> Menu_Clean.csv |<f1> file\://NYPL-Menus/Menu_Clean.csv}"];
+"MenuPage.csv" [shape=record rankdir=LR label="{<f0> MenuPage.csv |<f1> file\://NYPL-Menus/MenuPage.csv}"];
+"MenuPage_Clean.csv" [shape=record rankdir=LR label="{<f0> MenuPage_Clean.csv |<f1> file\://NYPL-Menus/MenuPage_Clean.csv}"];
+"MenuItem.csv" [shape=record rankdir=LR label="{<f0> MenuItem.csv |<f1> file\://NYPL-Menus/MenuItem.csv}"];
+"MenuItem_Clean.csv" [shape=record rankdir=LR label="{<f0> MenuItem_Clean.csv |<f1> file\://NYPL-Menus/MenuItem_Clean.csv}"];
+"Dish.csv" [shape=record rankdir=LR label="{<f0> Dish.csv |<f1> file\://NYPL-Menus/Dish.csv}"];
+"Dish_105K.csv" [shape=record rankdir=LR label="{<f0> Dish_105K.csv |<f1> file\://NYPL-Menus/Dish_105K.csv}"];
+"Dish_210K.csv" [shape=record rankdir=LR label="{<f0> Dish_210K.csv |<f1> file\://NYPL-Menus/Dish_210K.csv}"];
+"Dish_315K.csv" [shape=record rankdir=LR label="{<f0> Dish_315K.csv |<f1> file\://NYPL-Menus/Dish_315K.csv}"];
+"Dish_420K.csv" [shape=record rankdir=LR label="{<f0> Dish_420K.csv |<f1> file\://NYPL-Menus/Dish_420K.csv}"];
+"Dish_525K.csv" [shape=record rankdir=LR label="{<f0> Dish_525K.csv |<f1> file\://NYPL-Menus/Dish_525K.csv}"];
+"Dish_105K_Clean.csv" [shape=record rankdir=LR label="{<f0> Dish_105K_Clean.csv |<f1> file\://NYPL-Menus/Dish_105K_Clean.csv}"];
+"Dish_210K_Clean.csv" [shape=record rankdir=LR label="{<f0> Dish_210K_Clean.csv |<f1> file\://NYPL-Menus/Dish_210K_Clean.csv}"];
+"Dish_315K_Clean.csv" [shape=record rankdir=LR label="{<f0> Dish_315K_Clean.csv |<f1> file\://NYPL-Menus/Dish_315K_Clean.csv}"];
+"Dish_420K_Clean.csv" [shape=record rankdir=LR label="{<f0> Dish_420K_Clean.csv |<f1> file\://NYPL-Menus/Dish_420K_Clean.csv}"];
+"Dish_525K_Clean.csv" [shape=record rankdir=LR label="{<f0> Dish_525K_Clean.csv |<f1> file\://NYPL-Menus/Dish_525K_Clean.csv}"];
+"Dish_105K_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> Dish_105K_Clean_Final.csv |<f1> file\://NYPL-Menus/Dish_105K_Clean_Final.csv}"];
+"Dish_210K_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> Dish_210K_Clean_Final.csv |<f1> file\://NYPL-Menus/Dish_210K_Clean_Final.csv}"];
+"Dish_315K_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> Dish_315K_Clean_Final.csv |<f1> file\://NYPL-Menus/Dish_315K_Clean_Final.csv}"];
+"Dish_420K_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> Dish_420K_Clean_Final.csv |<f1> file\://NYPL-Menus/Dish_420K_Clean_Final.csv}"];
+"Dish_525K_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> Dish_525K_Clean_Final.csv |<f1> file\://NYPL-Menus/Dish_525K_Clean_Final.csv}"];
+"Menu_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> Menu_Clean_Final.csv |<f1> file\://NYPL-Menus/Menu_Clean_Final.csv}"];
+"MenuPage_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> MenuPage_Clean_Final.csv |<f1> file\://NYPL-Menus/MenuPage_Clean_Final.csv}"];
+"MenuItem_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> MenuItem_Clean_Final.csv |<f1> file\://NYPL-Menus/MenuItem_Clean_Final.csv}"];
+"Dish_Clean_Final.csv" [shape=record rankdir=LR label="{<f0> Dish_Clean_Final.csv |<f1> file\://NYPL-Menus/Dish_Clean_Final.csv}"];
+Menu [shape=record rankdir=LR label="{<f0> Menu |<f1> sqlite\://NYPLMenus.db/Menu}"];
+MenuPage [shape=record rankdir=LR label="{<f0> MenuPage |<f1> sqlite\://NYPLMenus.db/MenuPage}"];
+MenuItem [shape=record rankdir=LR label="{<f0> MenuItem |<f1> sqlite\://NYPLMenus.db/MenuItem}"];
+Dish [shape=record rankdir=LR label="{<f0> Dish |<f1> sqlite\://NYPLMenus.db/Dish}"];
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+
+/* Edges representing connections between programs and channels */
+MenuCleaningWithOpenRefine -> "Menu_Clean.csv"
+"Menu.csv" -> MenuCleaningWithOpenRefine
+MenuCleaningOpenRefineOperations -> MenuCleaningWithOpenRefine
+MenuCleaningWithTableau -> "Menu_Clean_Final.csv"
+"Menu_Clean.csv" -> MenuCleaningWithTableau
+MenuCleaningTableauOperations -> MenuCleaningWithTableau
+MenuPageCleaningWithOpenRefine -> "MenuPage_Clean.csv"
+"MenuPage.csv" -> MenuPageCleaningWithOpenRefine
+MenuPageCleaningOpenRefineOperations -> MenuPageCleaningWithOpenRefine
+MenuPageCleaningWithTableau -> "MenuPage_Clean_Final.csv"
+"MenuPage_Clean.csv" -> MenuPageCleaningWithTableau
+MenuPageCleaningTableauOperations -> MenuPageCleaningWithTableau
+MenuItemCleaningWithOpenRefine -> "MenuItem_Clean.csv"
+"MenuItem.csv" -> MenuItemCleaningWithOpenRefine
+MenuItemCleaningOpenRefineOperations -> MenuItemCleaningWithOpenRefine
+MenuItemCleaningWithTableau -> "MenuItem_Clean_Final.csv"
+"MenuItem_Clean.csv" -> MenuItemCleaningWithTableau
+MenuItemCleaningTableauOperations -> MenuItemCleaningWithTableau
+SplitDishFile -> "Dish_105K.csv"
+SplitDishFile -> "Dish_210K.csv"
+SplitDishFile -> "Dish_315K.csv"
+SplitDishFile -> "Dish_420K.csv"
+SplitDishFile -> "Dish_525K.csv"
+"Dish.csv" -> SplitDishFile
+SplitDishFileScript -> SplitDishFile
+DishCleaningWithOpenRefine -> "Dish_105K_Clean.csv"
+DishCleaningWithOpenRefine -> "Dish_210K_Clean.csv"
+DishCleaningWithOpenRefine -> "Dish_315K_Clean.csv"
+DishCleaningWithOpenRefine -> "Dish_420K_Clean.csv"
+DishCleaningWithOpenRefine -> "Dish_525K_Clean.csv"
+"Dish_105K.csv" -> DishCleaningWithOpenRefine
+"Dish_210K.csv" -> DishCleaningWithOpenRefine
+"Dish_315K.csv" -> DishCleaningWithOpenRefine
+"Dish_420K.csv" -> DishCleaningWithOpenRefine
+"Dish_525K.csv" -> DishCleaningWithOpenRefine
+DishCleaningOpenRefineOperations -> DishCleaningWithOpenRefine
+DishCleaningWithTableau -> "Dish_105K_Clean_Final.csv"
+DishCleaningWithTableau -> "Dish_210K_Clean_Final.csv"
+DishCleaningWithTableau -> "Dish_315K_Clean_Final.csv"
+DishCleaningWithTableau -> "Dish_420K_Clean_Final.csv"
+DishCleaningWithTableau -> "Dish_525K_Clean_Final.csv"
+"Dish_105K_Clean.csv" -> DishCleaningWithTableau
+"Dish_210K_Clean.csv" -> DishCleaningWithTableau
+"Dish_315K_Clean.csv" -> DishCleaningWithTableau
+"Dish_420K_Clean.csv" -> DishCleaningWithTableau
+"Dish_525K_Clean.csv" -> DishCleaningWithTableau
+DishCleaningTableauOperations -> DishCleaningWithTableau
+MergeDishFile -> "Dish_Clean_Final.csv"
+"Dish_105K_Clean_Final.csv" -> MergeDishFile
+"Dish_210K_Clean_Final.csv" -> MergeDishFile
+"Dish_315K_Clean_Final.csv" -> MergeDishFile
+"Dish_420K_Clean_Final.csv" -> MergeDishFile
+"Dish_525K_Clean_Final.csv" -> MergeDishFile
+MergeDishFileScript -> MergeDishFile
+LoadMenuInSQLite -> Menu
+"Menu_Clean_Final.csv" -> LoadMenuInSQLite
+MenuSQLiteLoadScript -> LoadMenuInSQLite
+LoadMenuPageInSQLite -> MenuPage
+"MenuPage_Clean_Final.csv" -> LoadMenuPageInSQLite
+MenuPageSQLiteLoadScript -> LoadMenuPageInSQLite
+LoadMenuItemInSQLite -> MenuItem
+"MenuItem_Clean_Final.csv" -> LoadMenuItemInSQLite
+MenuItemSQLiteLoadScript -> LoadMenuItemInSQLite
+LoadDishInSQLite -> Dish
+"Dish_Clean_Final.csv" -> LoadDishInSQLite
+DishSQLiteLoadScript -> LoadDishInSQLite
+CheckSQLConstraints -> Menu
+CheckSQLConstraints -> MenuPage
+CheckSQLConstraints -> MenuItem
+CheckSQLConstraints -> Dish
+Menu -> CheckSQLConstraints
+MenuPage -> CheckSQLConstraints
+MenuItem -> CheckSQLConstraints
+Dish -> CheckSQLConstraints
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* End of top-level graph */
+}

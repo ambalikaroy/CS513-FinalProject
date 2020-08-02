@@ -1,0 +1,182 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Parallel_OR
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+"core/text-transform0" [shape=record rankdir=LR label="{<f0> core/text-transform0 |<f1> Text transform on cells in column id using expression value.toNumber()}"];
+"core/text-transform1" [shape=record rankdir=LR label="{<f0> core/text-transform1 |<f1> Text transform on cells in column menu_page_id using expression value.toNumber()}"];
+"core/text-transform2" [shape=record rankdir=LR label="{<f0> core/text-transform2 |<f1> Text transform on cells in column price using expression value.toNumber()}"];
+"core/text-transform3" [shape=record rankdir=LR label="{<f0> core/text-transform3 |<f1> Text transform on cells in column price using expression grel\:if(value >= 0.01,value,'')}"];
+"core/text-transform4" [shape=record rankdir=LR label="{<f0> core/text-transform4 |<f1> Text transform on cells in column high_price using expression value.toNumber()}"];
+"core/text-transform5" [shape=record rankdir=LR label="{<f0> core/text-transform5 |<f1> Text transform on cells in column high_price using expression grel\:if(value >= 0.01,value,'')}"];
+"core/text-transform6" [shape=record rankdir=LR label="{<f0> core/text-transform6 |<f1> Text transform on cells in column dish_id using expression value.toNumber()}"];
+"core/text-transform7" [shape=record rankdir=LR label="{<f0> core/text-transform7 |<f1> Text transform on cells in column created_at using expression grel\:if(or(datePart(toDate(value),\"years\") < 1851,datePart(toDate(value),\"years\") > 2020),'', value)}"];
+"core/text-transform8" [shape=record rankdir=LR label="{<f0> core/text-transform8 |<f1> Text transform on cells in column updated_at using expression grel\:if(or(datePart(toDate(value),\"years\") < 1851,datePart(toDate(value),\"years\") > 2020),'', value)}"];
+"core/text-transform9" [shape=record rankdir=LR label="{<f0> core/text-transform9 |<f1> Text transform on cells in column xpos using expression value.toNumber()}"];
+"core/text-transform10" [shape=record rankdir=LR label="{<f0> core/text-transform10 |<f1> Text transform on cells in column ypos using expression value.toNumber()}"];
+"core/text-transform11" [shape=record rankdir=LR label="{<f0> core/text-transform11 |<f1> Text transform on cells in column created_at using expression value.toDate()}"];
+"core/text-transform12" [shape=record rankdir=LR label="{<f0> core/text-transform12 |<f1> Text transform on cells in column created_at using expression grel\:value.replace('UTC','')}"];
+"core/text-transform13" [shape=record rankdir=LR label="{<f0> core/text-transform13 |<f1> Text transform on cells in column created_at using expression value.toDate()}"];
+"core/text-transform14" [shape=record rankdir=LR label="{<f0> core/text-transform14 |<f1> Text transform on cells in column updated_at using expression grel\:value.replace('UTC','')}"];
+"core/text-transform15" [shape=record rankdir=LR label="{<f0> core/text-transform15 |<f1> Text transform on cells in column updated_at using expression value.toDate()}"];
+"core/text-transform16" [shape=record rankdir=LR label="{<f0> core/text-transform16 |<f1> Text transform on cells in column dish_id using expression grel\:if(value >=1, value,'')}"];
+"core/text-transform17" [shape=record rankdir=LR label="{<f0> core/text-transform17 |<f1> Text transform on cells in column created_at using expression grel\:value.replace('UTC','')}"];
+"core/text-transform18" [shape=record rankdir=LR label="{<f0> core/text-transform18 |<f1> Text transform on cells in column updated_at using expression grel\:value.replace('UTC','')}"];
+"core/text-transform19" [shape=record rankdir=LR label="{<f0> core/text-transform19 |<f1> Text transform on cells in column updated_at using expression grel\:value.replace('UTC','')}"];
+"core/text-transform20" [shape=record rankdir=LR label="{<f0> core/text-transform20 |<f1> Text transform on cells in column created_at using expression value.toDate()}"];
+"core/text-transform21" [shape=record rankdir=LR label="{<f0> core/text-transform21 |<f1> Text transform on cells in column updated_at using expression value.toDate()}"];
+"core/text-transform22" [shape=record rankdir=LR label="{<f0> core/text-transform22 |<f1> Text transform on cells in column price using expression value.toNumber()}"];
+"core/text-transform23" [shape=record rankdir=LR label="{<f0> core/text-transform23 |<f1> Text transform on cells in column price using expression grel\:if(value >= 0.01,value,'')}"];
+CombineDataCleaningChanges
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+CleanData
+id
+menu_page_id
+price
+price_1
+high_price
+high_price_1
+dish_id
+created_at
+updated_at
+xpos
+ypos
+created_at_1
+created_at_2
+created_at_3
+updated_at_1
+updated_at_2
+dish_id_1
+created_at_4
+updated_at_3
+updated_at_4
+created_at_5
+updated_at_5
+price_2
+price_3
+id_1
+menu_page_id_1
+price_4
+high_price_2
+dish_id_2
+created_at_6
+updated_at_6
+xpos_1
+ypos_1
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+"expression:value.toNumber()"
+"expression:grel:if(value_>=_0.01,value,'')"
+"expression:grel:if(or(datePart(toDate(value),\"years\")_<_1851,datePart(toDate(value),\"years\")_>_2020),'',_value)"
+"expression:value.toDate()"
+"expression:grel:value.replace('UTC','')"
+"expression:grel:if(value_>=1,_value,'')"
+
+/* Edges representing connections between programs and channels */
+"core/text-transform0" -> id_1
+"expression:value.toNumber()" -> "core/text-transform0"
+id -> "core/text-transform0"
+"core/text-transform1" -> menu_page_id_1
+"expression:value.toNumber()" -> "core/text-transform1"
+menu_page_id -> "core/text-transform1"
+"core/text-transform2" -> price_1
+"expression:value.toNumber()" -> "core/text-transform2"
+price -> "core/text-transform2"
+"core/text-transform3" -> price_2
+"expression:grel:if(value_>=_0.01,value,'')" -> "core/text-transform3"
+price_1 -> "core/text-transform3"
+"core/text-transform4" -> high_price_1
+"expression:value.toNumber()" -> "core/text-transform4"
+high_price -> "core/text-transform4"
+"core/text-transform5" -> high_price_2
+"expression:grel:if(value_>=_0.01,value,'')" -> "core/text-transform5"
+high_price_1 -> "core/text-transform5"
+"core/text-transform6" -> dish_id_1
+"expression:value.toNumber()" -> "core/text-transform6"
+dish_id -> "core/text-transform6"
+"core/text-transform7" -> created_at_1
+"expression:grel:if(or(datePart(toDate(value),\"years\")_<_1851,datePart(toDate(value),\"years\")_>_2020),'',_value)" -> "core/text-transform7"
+created_at -> "core/text-transform7"
+"core/text-transform8" -> updated_at_1
+"expression:grel:if(or(datePart(toDate(value),\"years\")_<_1851,datePart(toDate(value),\"years\")_>_2020),'',_value)" -> "core/text-transform8"
+updated_at -> "core/text-transform8"
+"core/text-transform9" -> xpos_1
+"expression:value.toNumber()" -> "core/text-transform9"
+xpos -> "core/text-transform9"
+"core/text-transform10" -> ypos_1
+"expression:value.toNumber()" -> "core/text-transform10"
+ypos -> "core/text-transform10"
+"core/text-transform11" -> created_at_2
+"expression:value.toDate()" -> "core/text-transform11"
+created_at_1 -> "core/text-transform11"
+"core/text-transform12" -> created_at_3
+"expression:grel:value.replace('UTC','')" -> "core/text-transform12"
+created_at_2 -> "core/text-transform12"
+"core/text-transform13" -> created_at_4
+"expression:value.toDate()" -> "core/text-transform13"
+created_at_3 -> "core/text-transform13"
+"core/text-transform14" -> updated_at_2
+"expression:grel:value.replace('UTC','')" -> "core/text-transform14"
+updated_at_1 -> "core/text-transform14"
+"core/text-transform15" -> updated_at_3
+"expression:value.toDate()" -> "core/text-transform15"
+updated_at_2 -> "core/text-transform15"
+"core/text-transform16" -> dish_id_2
+"expression:grel:if(value_>=1,_value,'')" -> "core/text-transform16"
+dish_id_1 -> "core/text-transform16"
+"core/text-transform17" -> created_at_5
+"expression:grel:value.replace('UTC','')" -> "core/text-transform17"
+created_at_4 -> "core/text-transform17"
+"core/text-transform18" -> updated_at_4
+"expression:grel:value.replace('UTC','')" -> "core/text-transform18"
+updated_at_3 -> "core/text-transform18"
+"core/text-transform19" -> updated_at_5
+"expression:grel:value.replace('UTC','')" -> "core/text-transform19"
+updated_at_4 -> "core/text-transform19"
+"core/text-transform20" -> created_at_6
+"expression:value.toDate()" -> "core/text-transform20"
+created_at_5 -> "core/text-transform20"
+"core/text-transform21" -> updated_at_6
+"expression:value.toDate()" -> "core/text-transform21"
+updated_at_5 -> "core/text-transform21"
+"core/text-transform22" -> price_3
+"expression:value.toNumber()" -> "core/text-transform22"
+price_2 -> "core/text-transform22"
+"core/text-transform23" -> price_4
+"expression:grel:if(value_>=_0.01,value,'')" -> "core/text-transform23"
+price_3 -> "core/text-transform23"
+CombineDataCleaningChanges -> CleanData
+id_1 -> CombineDataCleaningChanges
+menu_page_id_1 -> CombineDataCleaningChanges
+price_4 -> CombineDataCleaningChanges
+high_price_2 -> CombineDataCleaningChanges
+dish_id_2 -> CombineDataCleaningChanges
+created_at_6 -> CombineDataCleaningChanges
+updated_at_6 -> CombineDataCleaningChanges
+xpos_1 -> CombineDataCleaningChanges
+ypos_1 -> CombineDataCleaningChanges
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* End of top-level graph */
+}

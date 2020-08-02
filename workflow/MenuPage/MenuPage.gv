@@ -1,0 +1,94 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Parallel_OR
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+"core/text-transform0" [shape=record rankdir=LR label="{<f0> core/text-transform0 |<f1> Text transform on cells in column id using expression value.toNumber()}"];
+"core/text-transform1" [shape=record rankdir=LR label="{<f0> core/text-transform1 |<f1> Text transform on cells in column menu_id using expression value.toNumber()}"];
+"core/text-transform2" [shape=record rankdir=LR label="{<f0> core/text-transform2 |<f1> Text transform on cells in column page_number using expression value.toNumber()}"];
+"core/text-transform3" [shape=record rankdir=LR label="{<f0> core/text-transform3 |<f1> Text transform on cells in column page_number using expression grel\:if(value >=1, value,'')}"];
+"core/text-transform4" [shape=record rankdir=LR label="{<f0> core/text-transform4 |<f1> Text transform on cells in column image_id using expression value.toNumber()}"];
+"core/text-transform5" [shape=record rankdir=LR label="{<f0> core/text-transform5 |<f1> Text transform on cells in column full_height using expression value.toNumber()}"];
+"core/text-transform6" [shape=record rankdir=LR label="{<f0> core/text-transform6 |<f1> Text transform on cells in column full_width using expression value.toNumber()}"];
+"core/text-transform7" [shape=record rankdir=LR label="{<f0> core/text-transform7 |<f1> Text transform on cells in column uuid using expression value.toNumber()}"];
+CombineDataCleaningChanges
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+CleanData
+id
+menu_id
+page_number
+page_number_1
+image_id
+full_height
+full_width
+uuid
+id_1
+menu_id_1
+page_number_2
+image_id_1
+full_height_1
+full_width_1
+uuid_1
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+"expression:value.toNumber()"
+"expression:grel:if(value_>=1,_value,'')"
+
+/* Edges representing connections between programs and channels */
+"core/text-transform0" -> id_1
+"expression:value.toNumber()" -> "core/text-transform0"
+id -> "core/text-transform0"
+"core/text-transform1" -> menu_id_1
+"expression:value.toNumber()" -> "core/text-transform1"
+menu_id -> "core/text-transform1"
+"core/text-transform2" -> page_number_1
+"expression:value.toNumber()" -> "core/text-transform2"
+page_number -> "core/text-transform2"
+"core/text-transform3" -> page_number_2
+"expression:grel:if(value_>=1,_value,'')" -> "core/text-transform3"
+page_number_1 -> "core/text-transform3"
+"core/text-transform4" -> image_id_1
+"expression:value.toNumber()" -> "core/text-transform4"
+image_id -> "core/text-transform4"
+"core/text-transform5" -> full_height_1
+"expression:value.toNumber()" -> "core/text-transform5"
+full_height -> "core/text-transform5"
+"core/text-transform6" -> full_width_1
+"expression:value.toNumber()" -> "core/text-transform6"
+full_width -> "core/text-transform6"
+"core/text-transform7" -> uuid_1
+"expression:value.toNumber()" -> "core/text-transform7"
+uuid -> "core/text-transform7"
+CombineDataCleaningChanges -> CleanData
+id_1 -> CombineDataCleaningChanges
+menu_id_1 -> CombineDataCleaningChanges
+page_number_2 -> CombineDataCleaningChanges
+image_id_1 -> CombineDataCleaningChanges
+full_height_1 -> CombineDataCleaningChanges
+full_width_1 -> CombineDataCleaningChanges
+uuid_1 -> CombineDataCleaningChanges
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* End of top-level graph */
+}

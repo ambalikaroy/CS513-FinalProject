@@ -1,0 +1,131 @@
+#@begin OverallDataCleaningWorkflow  @desc Overall workflow for cleaning the NYPL Menus Dataset
+#@in Menu.csv  @uri file://NYPL-Menus/Menu.csv
+#@in MenuPage.csv  @uri file://NYPL-Menus/MenuPage.csv
+#@in MenuItem.csv  @uri file://NYPL-Menus/MenuItem.csv
+#@in Dish.csv  @uri file://NYPL-Menus/Dish.csv
+
+#@begin MenuCleaningWithOpenRefine  @desc Clean Menu.csv with OpenRefine
+#@in Menu.csv  @uri file://NYPL-Menus/Menu.csv
+#@param MenuCleaningOpenRefineOperations
+#@out Menu_Clean.csv  @uri file://NYPL-Menus/Menu_Clean.csv
+#@end MenuCleaningWithOpenRefine
+
+#@begin MenuCleaningWithTableau  @desc Clean Menu_Clean.csv with Tableau
+#@in Menu_Clean.csv  @uri file://NYPL-Menus/Menu_Clean.csv
+#@param MenuCleaningTableauOperations
+#@out Menu_Clean_Final.csv  @uri file://NYPL-Menus/Menu_Clean_Final.csv
+#@end MenuCleaningWithTableau
+
+#@begin MenuPageCleaningWithOpenRefine  @desc Clean MenuPage.csv with OpenRefine
+#@in MenuPage.csv  @uri file://NYPL-Menus/MenuPage.csv
+#@param MenuPageCleaningOpenRefineOperations
+#@out MenuPage_Clean.csv  @uri file://NYPL-Menus/MenuPage_Clean.csv
+#@end MenuPageCleaningWithOpenRefine
+
+#@begin MenuPageCleaningWithTableau  @desc Clean MenuPage_Clean.csv with Tableau
+#@in MenuPage_Clean.csv  @uri file://NYPL-Menus/MenuPage_Clean.csv
+#@param MenuPageCleaningTableauOperations
+#@out MenuPage_Clean_Final.csv  @uri file://NYPL-Menus/MenuPage_Clean_Final.csv
+#@end MenuPageCleaningWithTableau
+
+#@begin MenuItemCleaningWithOpenRefine  @desc Clean MenuItem.csv with OpenRefine
+#@in MenuItem.csv  @uri file://NYPL-Menus/MenuItem.csv
+#@param MenuItemCleaningOpenRefineOperations
+#@out MenuItem_Clean.csv  @uri file://NYPL-Menus/MenuItem_Clean.csv
+#@end MenuItemCleaningWithOpenRefine
+
+#@begin MenuItemCleaningWithTableau  @desc Clean MenuItem_Clean.csv with Tableau
+#@in MenuItem_Clean.csv  @uri file://NYPL-Menus/MenuItem_Clean.csv
+#@param MenuItemCleaningTableauOperations
+#@out MenuItem_Clean_Final.csv  @uri file://NYPL-Menus/MenuItem_Clean_Final.csv
+#@end MenuItemCleaningWithTableau
+
+#@begin SplitDishFile  @desc Split Dish.csv into 5 equal parts
+#@in Dish.csv  @uri file://NYPL-Menus/Dish.csv
+#@param SplitDishFileScript
+#@out Dish_105K.csv  @uri file://NYPL-Menus/Dish_105K.csv
+#@out Dish_210K.csv  @uri file://NYPL-Menus/Dish_210K.csv
+#@out Dish_315K.csv  @uri file://NYPL-Menus/Dish_315K.csv
+#@out Dish_420K.csv  @uri file://NYPL-Menus/Dish_420K.csv
+#@out Dish_525K.csv  @uri file://NYPL-Menus/Dish_525K.csv
+#@end SplitDishFile
+
+#@begin DishCleaningWithOpenRefine  @desc Clean Dish part files with OpenRefine
+#@in Dish_105K.csv  @uri file://NYPL-Menus/Dish_105K.csv
+#@in Dish_210K.csv  @uri file://NYPL-Menus/Dish_210K.csv
+#@in Dish_315K.csv  @uri file://NYPL-Menus/Dish_315K.csv
+#@in Dish_420K.csv  @uri file://NYPL-Menus/Dish_420K.csv
+#@in Dish_525K.csv  @uri file://NYPL-Menus/Dish_525K.csv
+#@param DishCleaningOpenRefineOperations
+#@out Dish_105K_Clean.csv  @uri file://NYPL-Menus/Dish_105K_Clean.csv
+#@out Dish_210K_Clean.csv  @uri file://NYPL-Menus/Dish_210K_Clean.csv
+#@out Dish_315K_Clean.csv  @uri file://NYPL-Menus/Dish_315K_Clean.csv
+#@out Dish_420K_Clean.csv  @uri file://NYPL-Menus/Dish_420K_Clean.csv
+#@out Dish_525K_Clean.csv  @uri file://NYPL-Menus/Dish_525K_Clean.csv
+#@end DishCleaningWithOpenRefine
+
+#@begin DishCleaningWithTableau  @desc Clean Dish part files with Tableau
+#@in Dish_105K_Clean.csv  @uri file://NYPL-Menus/Dish_105K_Clean.csv
+#@in Dish_210K_Clean.csv  @uri file://NYPL-Menus/Dish_210K_Clean.csv
+#@in Dish_315K_Clean.csv  @uri file://NYPL-Menus/Dish_315K_Clean.csv
+#@in Dish_420K_Clean.csv  @uri file://NYPL-Menus/Dish_420K_Clean.csv
+#@in Dish_525K_Clean.csv  @uri file://NYPL-Menus/Dish_525K_Clean.csv
+#@param DishCleaningTableauOperations
+#@out Dish_105K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_105K_Clean_Final.csv
+#@out Dish_210K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_210K_Clean_Final.csv
+#@out Dish_315K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_315K_Clean_Final.csv
+#@out Dish_420K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_420K_Clean_Final.csv
+#@out Dish_525K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_525K_Clean_Final.csv
+#@end DishCleaningWithTableau
+
+#@begin MergeDishFile  @desc Merge the cleaned partitioned files of Dish.csv
+#@in Dish_105K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_105K_Clean_Final.csv
+#@in Dish_210K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_210K_Clean_Final.csv
+#@in Dish_315K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_315K_Clean_Final.csv
+#@in Dish_420K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_420K_Clean_Final.csv
+#@in Dish_525K_Clean_Final.csv  @uri file://NYPL-Menus/Dish_525K_Clean_Final.csv
+#@param MergeDishFileScript
+#@out Dish_Clean_Final.csv  @uri file://NYPL-Menus/Dish_Clean_Final.csv
+#@end MergeDishFile
+
+#@begin LoadMenuInSQLite  @desc Load Menu_Clean_Final.csv into table: Menu
+#@in Menu_Clean_Final.csv  @uri file://NYPL-Menus/Menu_Clean_Final.csv
+#@param MenuSQLiteLoadScript
+#@out Menu  @uri sqlite://NYPLMenus.db/menu
+#@end LoadMenuInSQLite
+
+#@begin LoadMenuPageInSQLite @desc Load MenuPage_Clean_Final.csv into table: MenuPage
+#@in MenuPage_Clean_Final.csv  @uri file://NYPL-Menus/MenuPage_Clean_Final.csv
+#@param MenuPageSQLiteLoadScript
+#@out MenuPage  @uri sqlite://NYPLMenus.db/MenuPage
+#@end LoadMenuPageInSQLite
+
+#@begin LoadMenuItemInSQLite @desc Load MenuItem_Clean_Final.csv into table: MenuItem
+#@in MenuItem_Clean_Final.csv  @uri file://NYPL-Menus/MenuItem_Clean_Final.csv
+#@param MenuItemSQLiteLoadScript
+#@out MenuItem  @uri sqlite://NYPLMenus.db/MenuItem
+#@end LoadMenuItemInSQLite
+
+#@begin LoadDishInSQLite  @desc Load Dish_Clean_Final.csv into table: Dish
+#@in Dish_Clean_Final.csv  @uri file://NYPL-Menus/Dish_Clean_Final.csv
+#@param DishSQLiteLoadScript
+#@out Dish  @uri sqlite://NYPLMenus.db/Dish
+#@end LoadDishInSQLite
+
+#@begin CheckSQLConstraints  @desc SQL script to check integrity constraints
+#@in Menu  @uri sqlite://NYPLMenus.db/Menu
+#@in MenuPage  @uri sqlite://NYPLMenus.db/MenuPage
+#@in MenuItem  @uri sqlite://NYPLMenus.db/MenuItem
+#@in Dish  @uri sqlite://NYPLMenus.db/Dish
+#@param IntegrityConstraintsCheckScript
+#@out Menu  @uri sqlite://NYPLMenus.db/Menu
+#@out MenuPage  @uri sqlite://NYPLMenus.db/MenuPage
+#@out MenuItem  @uri sqlite://NYPLMenus.db/MenuItem
+#@out Dish  @uri sqlite://NYPLMenus.db/Dish
+#@end CheckSQLConstraints
+
+#@out Menu  @uri sqlite://NYPLMenus.db/Menu
+#@out MenuPage  @uri sqlite://NYPLMenus.db/MenuPage
+#@out MenuItem  @uri sqlite://NYPLMenus.db/MenuItem
+#@out Dish  @uri sqlite://NYPLMenus.db/Dish
+#@end OverallDataCleaningWorkflow
