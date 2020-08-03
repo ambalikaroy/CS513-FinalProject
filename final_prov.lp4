@@ -1,0 +1,86 @@
+e(menucleaningwithopenrefine , menu_clean).
+e(menu , menucleaningwithopenrefine).
+e(menucleaningopenrefineoperations , menucleaningwithopenrefine).
+e(menucleaningwithtableau , menu_clean_final).
+e(menu_clean , menucleaningwithtableau).
+e(menucleaningtableauoperations , menucleaningwithtableau).
+e(menupagecleaningwithopenrefine , menupage_clean).
+e(menupage , menupagecleaningwithopenrefine).
+e(menupagecleaningopenrefineoperations , menupagecleaningwithopenrefine).
+e(menupagecleaningwithtableau , menupage_clean_final).
+e(menupage_clean , menupagecleaningwithtableau).
+e(menupagecleaningtableauoperations , menupagecleaningwithtableau).
+e(menuitemcleaningwithopenrefine , menuitem_clean).
+e(menuitem , menuitemcleaningwithopenrefine).
+e(menuitemcleaningopenrefineoperations , menuitemcleaningwithopenrefine).
+e(menuitemcleaningwithtableau , menuitem_clean_final).
+e(menuitem_clean , menuitemcleaningwithtableau).
+e(menuitemcleaningtableauoperations , menuitemcleaningwithtableau).
+e(splitdishfile , dish_105k).
+e(splitdishfile , dish_210k).
+e(splitdishfile , dish_315k).
+e(splitdishfile , dish_420k).
+e(splitdishfile , dish_525k).
+e(dish , splitdishfile).
+e(splitdishfilescript , splitdishfile).
+e(dishcleaningwithopenrefine , dish_105k_clean).
+e(dishcleaningwithopenrefine , dish_210k_clean).
+e(dishcleaningwithopenrefine , dish_315k_clean).
+e(dishcleaningwithopenrefine , dish_420k_clean).
+e(dishcleaningwithopenrefine , dish_525k_clean).
+e(dish_105k , dishcleaningwithopenrefine).
+e(dish_210k , dishcleaningwithopenrefine).
+e(dish_315k , dishcleaningwithopenrefine).
+e(dish_420k , dishcleaningwithopenrefine).
+e(dish_525k , dishcleaningwithopenrefine).
+e(dishcleaningopenrefineoperations , dishcleaningwithopenrefine).
+e(dishcleaningwithtableau , dish_105k_clean_final).
+e(dishcleaningwithtableau , dish_210k_clean_final).
+e(dishcleaningwithtableau , dish_315k_clean_final).
+e(dishcleaningwithtableau , dish_420k_clean_final).
+e(dishcleaningwithtableau , dish_525k_clean_final).
+e(dish_105k_clean , dishcleaningwithtableau).
+e(dish_210k_clean , dishcleaningwithtableau).
+e(dish_315k_clean , dishcleaningwithtableau).
+e(dish_420k_clean , dishcleaningwithtableau).
+e(dish_525k_clean , dishcleaningwithtableau).
+e(dishcleaningtableauoperations , dishcleaningwithtableau).
+e(mergedishfile , dish_clean_final).
+e(dish_105k_clean_final , mergedishfile).
+e(dish_210k_clean_final , mergedishfile).
+e(dish_315k_clean_final , mergedishfile).
+e(dish_420k_clean_final , mergedishfile).
+e(dish_525k_clean_final , mergedishfile).
+e(mergedishfilescript , mergedishfile).
+e(loadmenuinsqlite , menu).
+e(menu_clean_final , loadmenuinsqlite).
+e(menusqliteloadscript , loadmenuinsqlite).
+e(loadmenupageinsqlite , menupage).
+e(menupage_clean_final , loadmenupageinsqlite).
+e(menupagesqliteloadscript , loadmenupageinsqlite).
+e(loadmenuiteminsqlite , menuitem).
+e(menuitem_clean_final , loadmenuiteminsqlite).
+e(menuitemsqliteloadscript , loadmenuiteminsqlite).
+e(loaddishinsqlite , dish).
+e(dish_clean_final , loaddishinsqlite).
+e(dishsqliteloadscript , loaddishinsqlite).
+e(checksqlconstraints , menu).
+e(checksqlconstraints , menupage).
+e(checksqlconstraints , menuitem).
+e(checksqlconstraints , dish).
+e(menu , checksqlconstraints).
+e(menupage , checksqlconstraints).
+e(menuitem , checksqlconstraints).
+e(dish , checksqlconstraints).
+
+
+tc(X, Y) :- e(X, Y).
+tc(X, Y) :- e(X, Z), tc(Z, Y).
+
+ans(X) :- tc(X, menupage).
+
+#show ans/1.
+
+ans_menu(X) :- tc(X, menu).
+
+#show ans_menu/1.
