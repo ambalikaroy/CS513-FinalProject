@@ -77,10 +77,20 @@ e(dish , checksqlconstraints).
 tc(X, Y) :- e(X, Y).
 tc(X, Y) :- e(X, Z), tc(Z, Y).
 
-ans(X) :- tc(X, menupage).
+ans_menu_page(X) :- tc(X, menupage).
 
-#show ans/1.
+
 
 ans_menu(X) :- tc(X, menu).
 
-#show ans_menu/1.
+
+
+
+ca(X, A, A) :- tc(X, A).
+ca(A, X, A) :- tc(X, A).
+ca(X,Y,A) :- tc(X, A), tc(Y, A), X != Y.
+
+ca_menu_menupage(X) :- ca(menu, menupage, X).
+
+
+#show ca_menu_menupage/1.
