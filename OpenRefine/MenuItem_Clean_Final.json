@@ -1,0 +1,749 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "id",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column id using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "menu_page_id",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column menu_page_id using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "price",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column price using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "price",
+    "expression": "grel:if(value >= 0.01,value,'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column price using expression grel:if(value >= 0.01,value,'')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "high_price",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column high_price using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "high_price",
+    "expression": "grel:if(value >= 0.01,value,'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column high_price using expression grel:if(value >= 0.01,value,'')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "dish_id",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column dish_id using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "created_at",
+    "expression": "grel:if(or(datePart(toDate(value),\"years\") < 1851,datePart(toDate(value),\"years\") > 2020),'', value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column created_at using expression grel:if(or(datePart(toDate(value),\"years\") < 1851,datePart(toDate(value),\"years\") > 2020),'', value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "updated_at",
+    "expression": "grel:if(or(datePart(toDate(value),\"years\") < 1851,datePart(toDate(value),\"years\") > 2020),'', value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updated_at using expression grel:if(or(datePart(toDate(value),\"years\") < 1851,datePart(toDate(value),\"years\") > 2020),'', value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "xpos",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column xpos using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ypos",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column ypos using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "high_price",
+          "expression": "value",
+          "columnName": "high_price",
+          "from": 0,
+          "to": 7900,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "dish_id",
+          "expression": "value",
+          "columnName": "dish_id",
+          "from": 0,
+          "to": 520000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "created_at",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column created_at using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "high_price",
+          "expression": "value",
+          "columnName": "high_price",
+          "from": 0,
+          "to": 7900,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "dish_id",
+          "expression": "value",
+          "columnName": "dish_id",
+          "from": 0,
+          "to": 520000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "created_at",
+    "expression": "grel:value.replace('UTC','')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column created_at using expression grel:value.replace('UTC','')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "high_price",
+          "expression": "value",
+          "columnName": "high_price",
+          "from": 0,
+          "to": 7900,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "dish_id",
+          "expression": "value",
+          "columnName": "dish_id",
+          "from": 0,
+          "to": 520000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "created_at",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column created_at using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "high_price",
+          "expression": "value",
+          "columnName": "high_price",
+          "from": 0,
+          "to": 7900,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "dish_id",
+          "expression": "value",
+          "columnName": "dish_id",
+          "from": 0,
+          "to": 520000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "timerange",
+          "name": "created_at",
+          "expression": "value",
+          "columnName": "created_at",
+          "from": 1301325686000,
+          "to": 1497043237000,
+          "selectTime": true,
+          "selectNonTime": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "updated_at",
+    "expression": "grel:value.replace('UTC','')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updated_at using expression grel:value.replace('UTC','')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "high_price",
+          "expression": "value",
+          "columnName": "high_price",
+          "from": 0,
+          "to": 7900,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "dish_id",
+          "expression": "value",
+          "columnName": "dish_id",
+          "from": 0,
+          "to": 520000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "timerange",
+          "name": "created_at",
+          "expression": "value",
+          "columnName": "created_at",
+          "from": 1301325686000,
+          "to": 1497043237000,
+          "selectTime": true,
+          "selectNonTime": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "updated_at",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updated_at using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "high_price",
+          "expression": "value",
+          "columnName": "high_price",
+          "from": 0,
+          "to": 7900,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "dish_id",
+          "expression": "value",
+          "columnName": "dish_id",
+          "from": 0,
+          "to": 520000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "timerange",
+          "name": "created_at",
+          "expression": "value",
+          "columnName": "created_at",
+          "from": 1301325686000,
+          "to": 1497043237000,
+          "selectTime": true,
+          "selectNonTime": false,
+          "selectBlank": true,
+          "selectError": true
+        },
+        {
+          "type": "timerange",
+          "name": "updated_at",
+          "expression": "value",
+          "columnName": "updated_at",
+          "from": 1302708327000,
+          "to": 1499016925000,
+          "selectTime": true,
+          "selectNonTime": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "dish_id",
+    "expression": "grel:if(value >=1, value,'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column dish_id using expression grel:if(value >=1, value,'')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "created_at",
+    "expression": "grel:value.replace('UTC','')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column created_at using expression grel:value.replace('UTC','')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "updated_at",
+    "expression": "grel:value.replace('UTC','')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updated_at using expression grel:value.replace('UTC','')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "updated_at",
+    "expression": "grel:value.replace('UTC','')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updated_at using expression grel:value.replace('UTC','')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "created_at",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column created_at using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "updated_at",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updated_at using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "price",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column price using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "price",
+          "expression": "value",
+          "columnName": "price",
+          "from": 0,
+          "to": 190000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "price",
+    "expression": "grel:if(value >= 0.01,value,'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column price using expression grel:if(value >= 0.01,value,'')"
+  }
+]
